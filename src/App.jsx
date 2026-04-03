@@ -13,7 +13,7 @@ function App() {
   });
 
   return (
-    <main className="bg-[#121212] min-h-screen text-white font-sans antialiased">
+    <main className="bg-[#0b0b10] min-h-screen text-white font-sans antialiased">
       {/* 500vh container for the scrub animation */}
       <div ref={containerRef} className="relative h-[500vh]">
         {/* Sticky wrapper limiting canvas & overlay to viewport height */}
@@ -27,11 +27,13 @@ function App() {
       <Projects />
       
       {/* Footer */}
-      <footer className="py-8 text-center text-gray-500 border-t border-white/10 relative z-20 bg-background">
-        <p>© {new Date().getFullYear()} John Doe. All rights reserved.</p>
+      <footer className="py-8 text-center text-slate-500 border-t border-white/10 relative z-20 bg-background">
+        <p>(c) {new Date().getFullYear()} T Deepak Kumar Patro. All rights reserved.</p>
       </footer>
     </main>
   );
 }
 
 export default App;
+
+
