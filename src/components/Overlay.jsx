@@ -5,7 +5,6 @@ const Overlay = ({ scrollYProgress }) => {
   // Section 1: Top (0% -> 12%)
   const y1 = useTransform(scrollYProgress, [0, 0.12], [0, -60]);
   const opacity1 = useTransform(scrollYProgress, [0, 0.08, 0.12], [1, 1, 0]);
-
   // Section 2: Left aligned (18% -> 30% -> 52%)
   const y2 = useTransform(scrollYProgress, [0.18, 0.3, 0.52], [80, 0, -80]);
   const opacity2 = useTransform(scrollYProgress, [0.18, 0.28, 0.42, 0.52], [0, 1, 1, 0]);
@@ -27,7 +26,7 @@ const Overlay = ({ scrollYProgress }) => {
             T Deepak Kumar Patro
           </p>
           <p className="mt-3 text-base md:text-lg text-slate-300">
-            B.Tech CSE @ KIIT University  •  CGPA 9.23/10
+            B.Tech CSE @ KL University  •  CGPA 9.23/10
           </p>
           <p className="mt-2 text-sm md:text-base text-slate-400">
             Web & Python Developer  •  AI/ML Enthusiast

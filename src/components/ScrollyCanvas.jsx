@@ -37,35 +37,40 @@ const ScrollyCanvas = ({ scrollYProgress }) => {
 
     const ctx = canvas.getContext('2d');
     
-    // Set canvas dimensions to match inner window resolution for sharp rendering
-    // Usually handled by a resize observer, let's keep it simple and tie it to window
-    // But realistically, canvas.width and canvas.height must be set before drawing
-    // We update canvas dim only if it changed to avoid expensive redraw setup
-    if (canvas.width !== window.innerWidth || canvas.height !== window.innerHeight) {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+    // High-DPI rendering for sharper frames
+    const cssWidth = window.innerWidth;
+    const cssHeight = window.innerHeight;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    if (canvas.width !== cssWidth * dpr || canvas.height !== cssHeight * dpr) {
+      canvas.width = cssWidth * dpr;
+      canvas.height = cssHeight * dpr;
     }
 
-    const { width, height } = canvas;
+    // Reset transform so scaling doesn't stack
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+
     const imgRatio = img.width / img.height;
-    const canvasRatio = width / height;
+    const canvasRatio = cssWidth / cssHeight;
 
     let drawWidth, drawHeight, offsetX, offsetY;
 
     // object-fit: cover logic
     if (canvasRatio > imgRatio) {
-      drawWidth = width;
-      drawHeight = width / imgRatio;
+      drawWidth = cssWidth;
+      drawHeight = cssWidth / imgRatio;
       offsetX = 0;
-      offsetY = (height - drawHeight) / 2;
+      offsetY = (cssHeight - drawHeight) / 2;
     } else {
-      drawWidth = height * imgRatio;
-      drawHeight = height;
-      offsetX = (width - drawWidth) / 2;
+      drawWidth = cssHeight * imgRatio;
+      drawHeight = cssHeight;
+      offsetX = (cssWidth - drawWidth) / 2;
       offsetY = 0;
     }
 
-    ctx.clearRect(0, 0, width, height);
+    ctx.clearRect(0, 0, cssWidth, cssHeight);
     ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
   };
 
