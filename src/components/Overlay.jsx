@@ -7,23 +7,23 @@ const Overlay = ({ scrollYProgress }) => {
   const [phase, setPhase] = useState(1);
 
   useMotionValueEvent(scrollYProgress, 'change', (v) => {
-    if (v < 0.18)        setPhase(1);
-    else if (v < 0.56)   setPhase(2);
-    else if (v < 0.92)   setPhase(3);
-    else                 setPhase(0);
+    if (v < 0.18) setPhase(1);
+    else if (v < 0.56) setPhase(2);
+    else if (v < 0.92) setPhase(3);
+    else setPhase(0);
   });
 
   // ── Section 1 transforms ─────────────────────────────────────────────
-  const y1      = useTransform(scrollYProgress, [0,    0.15], [0,   -70]);
-  const opacity1= useTransform(scrollYProgress, [0, 0.08, 0.15], [1, 1, 0]);
+  const y1 = useTransform(scrollYProgress, [0, 0.15], [0, -70]);
+  const opacity1 = useTransform(scrollYProgress, [0, 0.08, 0.15], [1, 1, 0]);
 
   // ── Section 2 transforms ─────────────────────────────────────────────
-  const y2      = useTransform(scrollYProgress, [0.22, 0.32, 0.50], [80,  0, -80]);
-  const opacity2= useTransform(scrollYProgress, [0.22, 0.30, 0.44, 0.52], [0, 1, 1, 0]);
+  const y2 = useTransform(scrollYProgress, [0.22, 0.32, 0.50], [80, 0, -80]);
+  const opacity2 = useTransform(scrollYProgress, [0.22, 0.30, 0.44, 0.52], [0, 1, 1, 0]);
 
   // ── Section 3 transforms ─────────────────────────────────────────────
-  const y3      = useTransform(scrollYProgress, [0.58, 0.68, 0.84], [80,  0, -80]);
-  const opacity3= useTransform(scrollYProgress, [0.58, 0.66, 0.78, 0.88], [0, 1, 1, 0]);
+  const y3 = useTransform(scrollYProgress, [0.58, 0.68, 0.84], [80, 0, -80]);
+  const opacity3 = useTransform(scrollYProgress, [0.58, 0.66, 0.78, 0.88], [0, 1, 1, 0]);
 
   return (
     <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-10">
@@ -99,10 +99,12 @@ const Overlay = ({ scrollYProgress }) => {
                 style={{ fontFamily: "'Orbitron', sans-serif", fontWeight: 700 }}
                 className="text-3xl md:text-5xl tracking-tight leading-tight drop-shadow-[0_10px_30px_rgba(0,0,0,0.45)]"
               >
-                Seeking a software or web development internship
+                Passionate about{' '}
+                <span className="text-violet-400">AI / ML</span>{' '}
+                and building intelligent products
               </h2>
               <p style={{ fontFamily: "'Inter', sans-serif" }} className="mt-4 text-base md:text-lg text-slate-300">
-                Focused on real-world impact and clean, scalable code
+                Eager to learn and explore machine learning, deep learning, and AI — turning curiosity into real-world solutions
               </p>
             </div>
           </motion.div>
