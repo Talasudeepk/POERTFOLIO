@@ -32,21 +32,24 @@ const highlights = [
 const projects = [
   {
     id: 1,
-    title: 'Profile Card & Portfolio Website',
-    description: 'Designed and built responsive UI components with a clean layout and readable typography for a personal portfolio.',
-    tags: ['HTML', 'CSS', 'Responsive Design'],
+    title: 'SCOREMATRIX - Student analytics system',
+    description: 'Developed a web-based platform to analyze student performance using only Django featuring interactive dashboards and data visualization.',
+    tags: ['Django', 'Bootstrap', 'Responsive Design'],
+    source: 'https://github.com/Talasudeepk/SCOREMATRIX',
   },
   {
     id: 2,
     title: 'To-Do List Application',
     description: 'Built a task management app with add, delete, and manage flows using React state and event handling.',
     tags: ['React.js', 'JavaScript', 'State Management'],
+    source: 'https://github.com/Talasudeepk/To-do-list',
   },
   {
     id: 3,
-    title: 'NutriLabel - Healthy Recipe Validator',
+    title: 'Nutritrack - Healthy Recipe Validator',
     description: 'Analyzes user-submitted recipes against FSSAI guidelines and suggests healthier ingredient alternatives.',
     tags: ['Python', 'Data Validation', 'Logic'],
+    source: 'https://github.com/Talasudeepk/Nutritrack',
   },
   {
     id: 4,
@@ -54,6 +57,7 @@ const projects = [
     description: 'Tool to generate optimized prompts for AI models with a focus on clarity and output quality.',
     tags: ['Prompt Engineering', 'AI/ML', 'Ongoing'],
     status: 'Ongoing',
+    source: 'https://github.com/Talasudeepk/LUMIQ',
   },
 ];
 
@@ -93,8 +97,8 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project) => (
-            <div 
-              key={project.id} 
+            <div
+              key={project.id}
               className="group relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur-md transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_12px_40px_rgba(16,185,129,0.12)]"
             >
               <div className="p-8">
@@ -109,7 +113,7 @@ const Projects = () => {
                 <p className="text-slate-400 mb-6 text-sm leading-relaxed">
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-8">
                   {project.tags.map(tag => (
                     <span key={tag} className="px-3 py-1 text-xs font-medium bg-white/10 rounded-full text-slate-300">
@@ -117,6 +121,13 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
+
+                <a
+                  href={project.source}
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-200 hover:text-emerald-100 transition-colors"
+                >
+                  Source Code
+                </a>
               </div>
             </div>
           ))}

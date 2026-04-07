@@ -1,15 +1,23 @@
-import React, { useRef } from 'react';
-import { useScroll } from 'framer-motion';
+import React, { useRef, useState } from 'react';
+import { useScroll, useMotionValueEvent } from 'framer-motion';
 import ScrollyCanvas from './components/ScrollyCanvas';
 import Overlay from './components/Overlay';
 import Projects from './components/Projects';
 
 function App() {
   const containerRef = useRef(null);
+  const [overlayHidden, setOverlayHidden] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    setOverlayHidden((prev) => {
+      const next = latest >= 0.9;
+      return prev === next ? prev : next;
+    });
   });
 
   return (
@@ -19,7 +27,7 @@ function App() {
         {/* Sticky wrapper limiting canvas & overlay to viewport height */}
         <div className="sticky top-0 h-screen w-full overflow-hidden">
           <ScrollyCanvas scrollYProgress={scrollYProgress} />
-          <Overlay scrollYProgress={scrollYProgress} />
+          {!overlayHidden && <Overlay scrollYProgress={scrollYProgress} />}
         </div>
       </div>
       
