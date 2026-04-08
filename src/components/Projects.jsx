@@ -5,7 +5,7 @@ const highlights = [
     title: 'Education',
     items: [
       'B.Tech in Computer Science Engineering, KIIT University (2024 - Present) — CGPA 9.23/10',
-      'Halikot College — 12th Grade (Completed)',
+      'Khalikot College — 12th Grade (Completed)',
       'DAV Public School — 10th Grade (Completed)',
     ],
   },

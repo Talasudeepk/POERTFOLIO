@@ -3,6 +3,7 @@ import { useScroll, useMotionValueEvent } from 'framer-motion';
 import ScrollyCanvas from './components/ScrollyCanvas';
 import Overlay from './components/Overlay';
 import Projects from './components/Projects';
+import Dock from './components/Dock';
 
 function App() {
   const containerRef = useRef(null);
@@ -38,6 +39,9 @@ function App() {
       <footer className="py-8 text-center text-slate-500 border-t border-white/10 relative z-20 bg-background">
         <p>(c) {new Date().getFullYear()} T Deepak Kumar Patro. All rights reserved.</p>
       </footer>
+
+      {/* Social Dock */}
+      <Dock />
     </main>
   );
 }
