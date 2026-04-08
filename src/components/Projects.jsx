@@ -4,9 +4,10 @@ const highlights = [
   {
     title: 'Education',
     items: [
-      'B.Tech in Computer Science Engineering, KIIT University (2024 - Present) — CGPA 9.23/10',
-      'Khalikot College — 12th Grade (Completed)',
-      'DAV Public School — 10th Grade (Completed)',
+      'B.Tech in Computer Science Engineering, KL University (2024 - Present) — CGPA 9.23/10',
+      'Khalikot College — 12th Grade (Completed)  [passout year: 2024]',
+      
+      'DAV Public School — 10th Grade (Completed) [passout year: 2022]',
     ],
   },
   {
